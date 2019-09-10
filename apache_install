@@ -2,5 +2,19 @@
 #
 #Skript mis kontrollib kas apache on paigaldatud ja kui ei ole paigaldab selle
 #
-#kontroll kas on paigaldatud
-a2=$(dpkg-query -W -f='${status}' apach2 2>/dev/null grep -c "ok installed")
+#kontroll kas Apache on paigaldatud
+a2=$(dpkg-query -W -f='${status}' apache2 2>/dev/null | grep -c "ok installed")
+#kui ei ole installeeritud siis $a2 võrdub nulliga
+if [ $a2 -eq 0 ]; then
+#teavitab kasutajat installeerimisest
+echo "Installeerib apache2"
+#installeerimise rida
+apt-get install -y apache2;
+#kontrollib kui $a2 ei ole null on apache juba installeeritud
+	elif [ $a2 -eq 1 ]; then
+#teavitab kasutajat et apache on juba installeeritud
+		echo "Apache2 on juba installeeritud"
+#apache staatus
+service apache2 status
+fi
+#skripti lõpp
