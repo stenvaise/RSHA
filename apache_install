@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+#Skript mis kontrollib kas apache on paigaldatud ja kui ei ole paigaldab selle
+#
+#kontroll kas on paigaldatud
+
