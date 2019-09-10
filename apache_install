@@ -3,4 +3,4 @@
 #Skript mis kontrollib kas apache on paigaldatud ja kui ei ole paigaldab selle
 #
 #kontroll kas on paigaldatud
-
+a2=$(dpkg-query -W -f='${status}' apach2 2>/dev/null grep -c "ok installed")
