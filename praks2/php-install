@@ -6,4 +6,14 @@ a2=$(dpkg-query -W -f='${status}' php 2>/dev/null | grep -c "ok installed")
 if [ $a2 -eq 0 ]; then
 #teavitab kasutajat php  installeerimisest
 echo "Installeerib php"
-#installeerimise rida
+#uuendab ja installeerib php
+apt-get update
+apt-get install  -y php libapache2-mod-php
+#kontrollib kui $a2 ei ole null on php juba installeeritud
+	elif [ $a2 -eq 1 ]; then
+#teavitab kasutajat et php on juba installeeritud
+		echo "Php on juba installeeritud"
+#php staatus
+service php status
+fi
+#skripti lõpp
