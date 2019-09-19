@@ -1,1 +1,18 @@
-# !
+#!/bin/bash
+#
+#Skript mis kontrollib kas wordpress on paigaldatud ja kui ei ole paigaldab selle
+#
+#kontrollib kas wordpress on paigaldatud
+a2=$(dpkg-query -W -f='${status}' wordpress 2>/dev/null | grep -c "ok installed")
+#kui saab vastuse 0 siis installeerib wordpressi
+if [ $a2 -eq -0 ]; then
+echo $a2
+apt-get update
+apt-get install -y wordpress
+#kui saab vastuse 1 siis on wordpress juba paigaldatud
+elif [ $a2 -eq -1 ]; then
+echo "Wordpress on juba olemas"
+dpkg-query -W | grep wordpress
+fi
+#
+#skripti lõpp
