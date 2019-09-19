@@ -1,4 +1,0 @@
-wget https://dev.mqsql.com/get/mysql-apt-config_0.8.13-1_all.deb
-dpkg -i mysql-apt-config_0.8.13-1_all.deb
-apt update
-apt install mysql-server # >5.6

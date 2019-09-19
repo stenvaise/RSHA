@@ -5,12 +5,12 @@
 mysql=$(dpkg-query -W -f='${Status}' mysql-server 2>/dev/null | grep -c "ok installed")
 if [ $mysql -eq 0 ]; then
 	echo "Paigaldame mysql-serveri"
-#Installeerib Mysql-serveri 8 versiooni
+#Installeerib Mysql-serveri
 wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
 dpkg -i mysql-apt-config_0.8.13-1_all.deb
 apt update
-apt install -y mysql-server # >5.6
-#kui on juba paigaldtaud ütleb kasutjale seda
+apt install -y mysql-server
+#kui on juba paigaldatud ütleb kasutajale seda
 elif [ $mysql -eq 1 ]; then
 	echo "Mysql-server on paigaldatud!"
 	#Näitab staatust
